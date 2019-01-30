@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react'; 
+import "./Button.css"; 
 
 const Button = ({GetAge}) => {
   return(
   <button
+  className='GetAge'
   onClick={GetAge}>
-    Add year
+    Add 2 years
     </button>
   );
 }

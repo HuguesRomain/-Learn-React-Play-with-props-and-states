@@ -27,31 +27,39 @@ class App extends Component {
     famille,
   }
 
-  handleClick = () => {
+  handleClick = (num) => {
     const famille = {...this.state.famille}
-    famille.membre1.age =+ famille.membre1.age + 1 
+    famille.membre1.age =+ famille.membre1.age + num
+    this.setState({famille})
+  };
+
+  handleChange = (event) => {
+    const famille = {...this.state.famille}
+    const name = event.target.value;
+    famille.membre1.name = name;
     this.setState({famille})
   };
   
   render() {
+    const { famille } = this.state;
     return (
       <div className="App">
        <h1>React App</h1>
+       <input value={famille.membre1.name} onChange={this.handleChange} type='text' />
        <Membre 
-       age= {this.state.famille.membre1.age} 
-       name= {this.state.famille.membre1.name} />
+       age= {famille.membre1.age} 
+       name= {famille.membre1.name} />
        <Membre 
-       age={this.state.famille.membre2.age}
-       name={this.state.famille.membre2.name} />
+       age={famille.membre2.age}
+       name={famille.membre2.name} />
        <Membre 
-       age={this.state.famille.membre3.age}
-       name={this.state.famille.membre3.name} />
+       age={famille.membre3.age}
+       name={famille.membre3.name} />
        <Membre 
-       age={this.state.famille.membre4.age}
-       name={this.state.famille.membre4.name} >
-       <strong>the drummer</strong>
+       age={famille.membre4.age}
+       name={famille.membre4.name}>
         </Membre>
-        <Button GetAge={this.handleClick} />
+        <Button GetAge={() => this.handleClick(2)} />
       </div>
     );
   }
