@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 
 
-const Membre = ({ name, children }) => {
+const Membre = ({ name, age, children }) => {
   return(
     <Fragment>
-    <h2>Membre de ma famille : {name} </h2>
+    <h2> {name} : {age} </h2>
     {children ? <p>{ children }</p> : <Fragment />}
     </Fragment>
   )
