@@ -54,27 +54,24 @@ class App extends Component {
       description = <strong>The drummer</strong>
     }
 
+    const liste = Object.keys(famille)
+    .map(membre => (
+       <Membre 
+       age= {famille[membre].age} 
+       name= {famille[membre].name} />
+    ))
+      console.log(famille)
+    
+
     return (
       <div className="App">
        <h1>React App</h1>
        <input value={famille.membre1.name} onChange={this.handleChange} type='text' />
-       <Membre 
-       age= {famille.membre1.age} 
-       name= {famille.membre1.name} />
-       <Membre 
-       age={famille.membre2.age}
-       name={famille.membre2.name} />
-       <Membre 
-       age={famille.membre3.age}
-       name={famille.membre3.name} />
-       <Membre 
-       age={famille.membre4.age}
-       name={famille.membre4.name}>
+       { liste }
         {description}
        <button onClick={this.handleShowDescription}>
          {this.state.isShow ? 'Hide' : 'Show'}
          </button>
-        </Membre>
         <Button GetAge={() => this.handleClick(2)} />
       </div>
     );
