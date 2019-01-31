@@ -41,6 +41,12 @@ class App extends Component {
     this.setState({famille})
   };
 
+  hideName = (id) => {
+    const famille = {...this.state.famille}
+    famille[id].name = 'x'
+    this.setState({famille})
+  };
+
   handleShowDescription = () => {
     const isShow = !this.state.isShow
     this.setState({isShow})
@@ -57,6 +63,7 @@ class App extends Component {
     const liste = Object.keys(famille)
     .map(membre => (
        <Membre 
+       hideName={() => this.hideName(membre)}
        age= {famille[membre].age} 
        name= {famille[membre].name} />
     ))
