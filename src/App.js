@@ -43,7 +43,7 @@ class App extends Component {
 
   hideName = (id) => {
     const famille = {...this.state.famille}
-    famille[id].name = 'x'
+    famille[id].name = ''
     this.setState({famille})
   };
 
@@ -63,6 +63,7 @@ class App extends Component {
     const liste = Object.keys(famille)
     .map(membre => (
        <Membre 
+       key={membre}
        hideName={() => this.hideName(membre)}
        age= {famille[membre].age} 
        name= {famille[membre].name} />
