@@ -34,16 +34,16 @@ class App extends Component {
     this.setState({famille})
   };
 
-  handleChange = (event) => {
+  handleChange = (event, i) => {
     const famille = {...this.state.famille}
-    const name = event.target.value;
-    famille.membre1.name = name;
+    const name = event.target.value
+    famille[i].name = name;
     this.setState({famille})
   };
 
-  hideName = (id) => {
+  hideName = (i) => {
     const famille = {...this.state.famille}
-    famille[id].name = ''
+    famille[i].name = ''
     this.setState({famille})
   };
 
@@ -61,22 +61,23 @@ class App extends Component {
     }
 
     const liste = Object.keys(famille)
-    .map(membre => (
+    .map(membre  => (
        <Membre 
        key={membre}
+       handleChange={event => this.handleChange(event, membre)}
        hideName={() => this.hideName(membre)}
        age= {famille[membre].age} 
        name= {famille[membre].name} />
     ))
-      console.log(famille)
+
     
 
     return (
       <div className="App">
        <h1>React App</h1>
-       <input value={famille.membre1.name} onChange={this.handleChange} type='text' />
+       {/* <input value={famille.membre1.name} onChange={this.handleChange} type='text' /> */}
        { liste }
-        {description}
+      { description }
        <button onClick={this.handleShowDescription}>
          {this.state.isShow ? 'Hide' : 'Show'}
          </button>
